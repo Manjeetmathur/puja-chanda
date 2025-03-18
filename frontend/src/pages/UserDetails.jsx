@@ -56,9 +56,9 @@ const UserDetails = () => {
                                    <h1 className='font-bold text-gray-800'>Paid दिनांक :</h1>
                                    <span className='text-md text-gray-700'>{user.date} </span>
                             </div>
-                            <div className="mt-5 text-center">
+                           {user.pujaChanda == 0 && <div className="mt-5 text-center">
                                    <Link to={`/pay/${user._id}`} className='text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-green-700 transition'>चंदा जमा करें ➡</Link>
-                            </div>
+                            </div>}
                      </ul>
               </div>
        );
