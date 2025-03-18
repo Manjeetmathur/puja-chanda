@@ -6,6 +6,7 @@ import { uri } from '../backend/Uri';
 const Admin = () => {
        const [users, setUsers] = useState([]);
        const [name, setName] = useState('');
+       const [search, setSearch] = useState('');
 
        useEffect(() => {
               axios.get(`${uri}/all-users`)
@@ -14,8 +15,12 @@ const Admin = () => {
        }, []);
 
        const createUser = async () => {
-              await axios.post(`${uri}/create-user`, { name }).then(() => {window.location.reload()});
+              await axios.post(`${uri}/create-user`, { name }).then(() => { window.location.reload(); });
        };
+
+       const filteredUsers = users.filter(user => 
+              user.name.toLowerCase().includes(search.toLowerCase())
+       );
 
        return (
               <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
@@ -37,9 +42,18 @@ const Admin = () => {
                                    </button>
                             </div>
                      </div>
+                     <div className="w-full max-w-3xl mt-6">
+                            <input 
+                                   type="text" 
+                                   placeholder='Search user by name' 
+                                   value={search} 
+                                   onChange={(e) => setSearch(e.target.value)}
+                                   className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                            />
+                     </div>
                      <ul className='w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 mt-6 border border-gray-200'>
                             <li className="font-bold text-lg text-gray-700 border-b pb-2 mb-3">Users</li>
-                            {users.map(user => (
+                            {filteredUsers.map(user => (
                                    <div className="flex justify-between items-center border-b py-3" key={user._id}>
                                           <span className="text-gray-800 font-medium">{user?.name}</span>
                                           <Link 
