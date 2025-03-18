@@ -22,7 +22,7 @@ const Home = () => {
                      </div>
                      <div className="flex justify-center items-center my-3">
                             <h1 className='text-3xl'>👇 </h1>
-                            <p className='text-xl text-green-800'>चंदा देने के लिए click करें
+                            <p className='text-xl text-green-800'>चंदा की जानकारी लें
                             </p>
                      </div>
                      <Link className='text-lg font-medium text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition' to={"/user"}>मां मथुरासिनी पूजा चंदा ➡</Link>
