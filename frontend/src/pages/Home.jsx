@@ -14,7 +14,7 @@ const Home = () => {
        }, []);
 
        return (
-              <div className=" bg-gray-100 flex flex-col items-center ">
+              <div className="  flex flex-col items-center ">
                      <div className="flex flex-col items-center text-center my-5">
                             <h1 className='text-3xl font-extrabold text-orange-600 mb-3'>जय मां मथुरासिनी</h1>
                             <img src={p1} alt="Maa Mathurasini" className='h-[350px] rounded-lg shadow-lg' />
