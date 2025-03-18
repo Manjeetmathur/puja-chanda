@@ -35,7 +35,6 @@ const Update = () => {
        const Phone = () => {
               axios.post(`${uri}/phone/id?id=${user._id}`, { phone: phoneNo })
                      .then(() => {
-                            setUser({ ...user, phoneNo: user.phone })
                             window.location.reload()
                      })
                      .catch(error => console.error('Error updating payment:', error));
@@ -43,15 +42,16 @@ const Update = () => {
        const khana = () => {
               axios.post(`${uri}/khana/id?id=${user._id}`, { amount: khanaChanda })
                      .then(() => {
-                            setUser({ ...user, phoneNo: user.phone })
+                            total()
                             window.location.reload()
+                            
                      })
                      .catch(error => console.error('Error updating payment:', error));
        };
        const puja = () => {
               axios.post(`${uri}/puja/id?id=${user._id}`, { amount: pujaChanda })
                      .then(() => {
-                            setUser({ ...user, phoneNo: user.phone })
+                            total()
                             window.location.reload()
                      })
                      .catch(error => console.error('Error updating payment:', error));
@@ -59,15 +59,20 @@ const Update = () => {
        const updatedate = () => {
               axios.post(`${uri}/date/id?id=${user._id}`, { date })
                      .then(() => {
-                            setUser({ ...user, phoneNo: user.phone })
                             window.location.reload()
                      })
                      .catch(error => console.error('Error updating payment:', error));
        };
-       useEffect(async()=>{
-              await axios.post(`${uri}/user/total/id?id=${user._id}`)
-       },[khanaChanda,pujaChanda])
-       console.log(phoneNo)
+       
+       const total = () => {
+              axios.post(`${uri}/total/id?id=${user._id}`)
+                     .then(() => {
+                            window.location.reload()
+                     })
+                     .catch(error => console.error('Error updating payment:', error));
+       };
+       
+
        return (
               <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
                      <h1 className='text-2xl font-bold text-orange-600 mb-6'>आपकी जानकारी</h1>
@@ -110,6 +115,7 @@ const Update = () => {
                                           >Update</button>
                                    </div>
                             ))}
+                           
                      </div>
               </div>
        );
