@@ -6,7 +6,7 @@ import { uri } from '../backend/Uri';
 const User = () => {
        const [users, setUsers] = useState([]);
        const [search, setSearch] = useState('');
-
+let s=1;
        useEffect(() => {
               axios.get(`${uri}/all-users`)
                      .then(response => setUsers(response.data))
@@ -16,7 +16,6 @@ const User = () => {
        const filteredUsers = users.filter(user => 
               user.name.toLowerCase().includes(search.toLowerCase())
        );
-       console.log(users)
 
        return (
               <div className="min-h-screen bg-gray-100 flex flex-col items-center p-5">
@@ -32,10 +31,10 @@ const User = () => {
                      </div>
                      <ul className='w-full max-w-2xl bg-white shadow-lg rounded-lg p-5'>
                             <li className='text-lg font-semibold border-b pb-2 mb-3'>नाम</li>
-                            {filteredUsers.map((idx,user) => (
+                            {filteredUsers.map(user => (
                                    <div key={user?._id} className="flex justify-between items-center py-2 border-b">
 
-                                          <li className='text-md text-gray-700'> {user?.name}</li>
+                                          <li className='text-md text-gray-700'>{s++}. {user.name}</li>
                                           <Link to={`/user/${user._id}`} className='text-blue-500 hover:underline'>See Details ➡</Link>
                                    </div>
                             ))}
