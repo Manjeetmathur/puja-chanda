@@ -31,9 +31,10 @@ const User = () => {
                      </div>
                      <ul className='w-full max-w-2xl bg-white shadow-lg rounded-lg p-5'>
                             <li className='text-lg font-semibold border-b pb-2 mb-3'>नाम</li>
-                            {filteredUsers.map(user => (
+                            {filteredUsers.map((idx,user) => (
                                    <div key={user._id} className="flex justify-between items-center py-2 border-b">
-                                          <li className='text-md text-gray-700'>{user.name}</li>
+
+                                          <li className='text-md text-gray-700'>{idx+1}. {user.name}</li>
                                           <Link to={`/user/${user._id}`} className='text-blue-500 hover:underline'>See Details ➡</Link>
                                    </div>
                             ))}
