@@ -64,6 +64,9 @@ const Update = () => {
                      })
                      .catch(error => console.error('Error updating payment:', error));
        };
+       useEffect(async()=>{
+              await axios.post(`${uri}/user/total/id?id=${user._id}`)
+       },[khanaChanda,pujaChanda])
        console.log(phoneNo)
        return (
               <div className="min-h-screen bg-gray-50 flex flex-col items-center p-6">
