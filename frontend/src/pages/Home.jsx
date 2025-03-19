@@ -18,11 +18,11 @@ const Home = () => {
                      <div className="flex flex-col items-center text-center my-5">
                             <h1 className='text-3xl font-extrabold text-orange-600 mb-3'>जय मां मथुरासिनी</h1>
                             <img src={p1} alt="Maa Mathurasini" className='h-[350px] rounded-lg shadow-lg' />
-                            <h1 className='text-xl font-semibold my-5 text-pink-600'>माहुरी नवयुवक समिति चंदौरी</h1>
+                            <h1 className='text-xl font-semibold my-5 text-pink-600'>माहुरी वैश्य मंडल चंदौरी</h1>
                      </div>
                      <div className="flex justify-center items-center my-3">
                             <h1 className='text-3xl'>👇 </h1>
-                            <p className='text-xl text-green-800'>चंदा की जानकारी लें
+                            <p className='text-xl text-green-800'>चंदे की जानकारी लें
                             </p>
                      </div>
                      <Link className='text-lg font-medium text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-blue-700 transition' to={"/user"}>मां मथुरासिनी पूजा चंदा ➡</Link>

@@ -31,7 +31,7 @@ let s=1;
                      <div className="w-full max-w-2xl mb-4">
                             <input 
                                    type="text" 
-                                   placeholder='यूजर खोजें' 
+                                   placeholder='अपना नाम खोजें' 
                                    value={search} 
                                    onChange={(e) => setSearch(e.target.value)}
                                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
