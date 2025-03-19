@@ -61,7 +61,10 @@ const UserDetails = () => {
                                    <h1 className='font-bold text-gray-800'>Paid दिनांक :</h1>
                                    <span className='text-md text-gray-700'>{user.date} </span>
                             </div>
+
                            {user.pujaChanda == 0 && <div className="mt-5 text-center">
+                            <p className='text-xl text-blue-700 my-5'>इस वर्ष मां मथुरासिनी पूजा का चंदा  ₹275 रखा गया है </p>
+                            <p className='text-xl text-blue-700 my-5'>🙏🏻  कृपया पिछले वर्ष के चंदे में कम से कम ₹20 बढ़ाकर इस वर्ष का चंदा दें</p>
                                    <Link to={`/pay/${user._id}`} className='text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-green-700 transition'>चंदा जमा करें ➡</Link>
                             </div>}
                      </ul>
