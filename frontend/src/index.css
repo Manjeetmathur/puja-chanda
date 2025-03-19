@@ -1,1 +1,32 @@
 @import "tailwindcss";
+
+.homebg {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100vw;
+       height: 100vh;
+}
+
+.homebg::before {
+       content: "";
+       background-image: url('../src/assets/p4.jpg'); /* Corrected path */
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100vw;
+       height: 100vh;
+       opacity: 0.3; /* Adjust the opacity of the background image */
+       z-index: -1; /* Keeps it behind any content inside .homebg */
+}
+
+/* Apply different width for large screens (lg) */
+@media (min-width: 1024px) {
+       .homebg::before {
+              width: 500px;
+              background-position: center;
+       }
+}

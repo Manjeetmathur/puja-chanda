@@ -6,16 +6,18 @@ import User from './pages/User';
 import UserDetails from './pages/UserDetails';
 import Pay from './pages/Pay';
 import Update from './pages/Update';
+import Prarthana from './pages/Prarthana';
 function App() {
 
   return (
-    <div className="p-4">
+    <div className="p">
 
       
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/prarthana" element={<Prarthana />} />
           <Route path="/user" element={<User />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/pay/:id" element={<Pay/>} />
