@@ -28,7 +28,7 @@ const Pay = () => {
                      <h1 className='text-3xl font-extrabold text-orange-600 mb-5'>Scan to Pay</h1>
                      <img src={p1} alt="QR Code" className='h-[300px] w-64 rounded-lg shadow-lg mb-5 border border-gray-300' />
                      <h1 className='text-xl font-semibold text-gray-700'>  या... UPI से करें</h1>
-                     <h1 className='text-lg font-medium text-gray-600 mb-5'>UPI ID: <span className='text-blue-600 font-bold'>6287773228-2@ybl</span></h1>
+                     <h1 className='text-lg font-medium text-gray-600 mb-5'>UPI ID: <span className='text-blue-600 font-bold'>niteshkumargupta2222@ybl</span></h1>
                      <button
                             onClick={sendSSt}
                             className='bg-green-500 text-white px-5 py-2 rounded-lg shadow-md hover:bg-green-700 transition'>
