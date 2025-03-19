@@ -79,7 +79,7 @@ const UserDetails = () => {
         </ul>
 
         {/* Conditional Payment Info */}
-        {user.pujaChanda == 0 && (
+        {!user.pujaPaid  && !user.khanaPaid &&
           <div className="mt-8 text-center space-y-4">
             <p className="text-lg text-blue-700 font-medium">
               इस वर्ष मां मथुरासिनी पूजा का चंदा ₹275 रखा गया है
@@ -97,7 +97,7 @@ const UserDetails = () => {
               चंदा जमा करें ➡
             </Link>
           </div>
-        )}
+        }
       </div>
     </div>
   );
