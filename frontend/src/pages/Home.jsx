@@ -36,13 +36,11 @@ const Home = () => {
               <div className="relative min-h-screen bg-orange-100 flex flex-col overflow-hidden">
                      {/* Header Section */}
                      <header className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
-                            <div className="container mx-auto px-4 flex justify-center items-center">
+                            <div className="container mx-auto px-4 flex justify-center items-center">🙏
                                    <h1 className="text-3xl font-extrabold tracking-wider drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
-                                   🙏जय मां मथुरासिनी 🙏
+                                   जय मां मथुरासिनी 
                                    </h1>
-                                   <nav>
-
-                                   </nav>
+                                   🙏
                             </div>
                      </header>
 
