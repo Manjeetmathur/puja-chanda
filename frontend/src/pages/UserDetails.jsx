@@ -31,22 +31,22 @@ const UserDetails = () => {
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
                                    <h1 className='font-bold text-gray-800'>पिछला पूजा चंदा (2024)
-                                    :</h1>
+                                          :</h1>
                                    <span className='text-md text-gray-700'>₹{user.pichhlapujaChanda}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
                                    <h1 className='font-bold text-gray-800'> पूजा चंदा (2025)
-                                    :</h1>
+                                          :</h1>
                                    <span className='text-md text-gray-700'>₹{user.pujaChanda}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
                                    <h1 className='font-bold text-gray-800'> खाना चंदा (2025)
-                                    :</h1>
+                                          :</h1>
                                    <span className='text-md text-gray-700'>₹{user.khanaChanda}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
                                    <h1 className='font-bold text-gray-800'> कुल चंदा
-                                    :</h1>
+                                          :</h1>
                                    <span className='text-md text-gray-700'>₹{user.total}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
@@ -62,11 +62,14 @@ const UserDetails = () => {
                                    <span className='text-md text-gray-700'>{user.date} </span>
                             </div>
 
-                           {user.pujaChanda == 0 && <div className="mt-5 text-center">
-                            <p className='text-xl text-blue-700 my-5'>इस वर्ष मां मथुरासिनी पूजा का चंदा  ₹275 रखा गया है </p>
-                            <p className='text-xl text-blue-700 my-5'>🙏🏻  कृपया पिछले वर्ष के चंदे में कम से कम ₹20 बढ़ाकर इस वर्ष का चंदा दें</p>
+                            {user.pujaChanda == 0 && <div className="mt-5 text-center">
+                                   <p className='text-xl text-blue-700 my-5'>इस वर्ष मां मथुरासिनी पूजा का चंदा  ₹275 रखा गया है </p>
+                                   <p className='text-xl text-blue-700 my-5'>🙏🏻  कृपया पिछले वर्ष के चंदे में कम से कम ₹20 बढ़ाकर इस वर्ष का चंदा दें</p>
+                                   <p className='text-xl text-blue-700 my-5'>और सामूहिक भोजन में बड़ों के प्रति व्यक्ति ₹70 और बच्चों के लिए ₹40 की राशि तय की गई</p>
                                    <Link to={`/pay/${user._id}`} className='text-white bg-green-500 px-6 py-2 rounded-lg shadow-md hover:bg-green-700 transition'>चंदा जमा करें ➡</Link>
-                            </div>}
+                                   
+                            </div>
+                            }
                      </ul>
               </div>
        );
