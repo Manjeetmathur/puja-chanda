@@ -18,7 +18,7 @@ const Pay = () => {
               return <div className="min-h-screen flex items-center justify-center text-lg font-semibold text-gray-600">Loading...</div>;
        }
        const sendSSt = () => {
-              const phoneNumber = '6287773228';
+              const phoneNumber = '7761961500';
               const message = encodeURIComponent(`नाम : ${user?.name}, Payment Screenshot`);
               window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
             };
