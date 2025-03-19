@@ -43,6 +43,7 @@ export const pujaChanda = async (req, res) => {
 export const pichhlapujaChanda = async (req, res) => {
        try {
               const { amount } = req.body;
+              console.log(amount)
               const { id } = req.query;
               const user = await User.findById(id);
               if (!user) return res.status(404).json({ message: 'User not found' });
