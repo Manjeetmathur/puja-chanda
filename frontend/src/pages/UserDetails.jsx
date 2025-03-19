@@ -30,12 +30,17 @@ const UserDetails = () => {
                                    <span className='text-md text-gray-700'>{user.phone}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
-                                   <h1 className='font-bold text-gray-800'> पूजा चंदा
+                                   <h1 className='font-bold text-gray-800'>पिछला पूजा चंदा (2024)
+                                    :</h1>
+                                   <span className='text-md text-gray-700'>₹{user.pichhlapujaChanda}</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3 border-b">
+                                   <h1 className='font-bold text-gray-800'> पूजा चंदा (2025)
                                     :</h1>
                                    <span className='text-md text-gray-700'>₹{user.pujaChanda}</span>
                             </div>
                             <div className="flex justify-between items-center py-3 border-b">
-                                   <h1 className='font-bold text-gray-800'> खाना चंदा
+                                   <h1 className='font-bold text-gray-800'> खाना चंदा (2025)
                                     :</h1>
                                    <span className='text-md text-gray-700'>₹{user.khanaChanda}</span>
                             </div>

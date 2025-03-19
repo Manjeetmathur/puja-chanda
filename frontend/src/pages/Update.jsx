@@ -10,6 +10,7 @@ const Update = () => {
        const [phoneNo, setPhoneNo] = useState('');
        const [khanaChanda, setKhanaChanda] = useState('');
        const [pujaChanda, setPujaChanda] = useState('');
+       const [pichhlapujaChanda, setpichhlaPujaChanda] = useState('');
        const [date, setDate] = useState('');
 
        useEffect(() => {
@@ -48,6 +49,14 @@ const Update = () => {
                      })
                      .catch(error => console.error('Error updating payment:', error));
        };
+       const pichhlapuja = () => {
+              axios.post(`${uri}/pichhlapuja/id?id=${user._id}`, { amount: pichhlapujaChanda })
+                     .then(() => {
+                            total()
+                            window.location.reload()
+                     })
+                     .catch(error => console.error('Error updating payment:', error));
+       };
        const puja = () => {
               axios.post(`${uri}/puja/id?id=${user._id}`, { amount: pujaChanda })
                      .then(() => {
@@ -80,6 +89,7 @@ const Update = () => {
                             {[
                                    { label: "नाम", value: user.name },
                                    { label: "फोन नंबर", value: user.phone },
+                                   { label: "पिछला पूजा चंदा", value: `₹${user.pichhlapujaChanda}` },
                                    { label: "पूजा चंदा", value: `₹${user.pujaChanda}` },
                                    { label: "खाना चंदा", value: `₹${user.khanaChanda}` },
                                    { label: "कुल चंदा", value: `₹${user.total}` },
@@ -105,7 +115,7 @@ const Update = () => {
                                           </button>
                                    </div>
                             ))}
-                            {[{ label: "Phone", value: phoneNo, setValue: setPhoneNo, handler: Phone }, { label: "Khana", value: khanaChanda, setValue: setKhanaChanda, handler: khana }, { label: "Puja", value: pujaChanda, setValue: setPujaChanda, handler: puja }, { label: "Date", value: date, setValue: setDate, handler: updatedate }].map((item, index) => (
+                            {[{ label: "Phone", value: phoneNo, setValue: setPhoneNo, handler: Phone },  { label: "Pichhla Puja Chanda ", value: pichhlapujaChanda, setValue: setpichhlaPujaChanda, handler: pichhlapuja }, { label: "Puja Chanda", value: pujaChanda, setValue: setPujaChanda, handler: puja },{ label: "Khana chanda", value: khanaChanda, setValue: setKhanaChanda, handler: khana }, { label: "Date", value: date, setValue: setDate, handler: updatedate }].map((item, index) => (
                                    <div key={index} className="flex flex-col gap-2">
                                           <input type="text" placeholder={item.label} className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
                                                  value={item.value}

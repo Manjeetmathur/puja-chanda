@@ -40,6 +40,19 @@ export const pujaChanda = async (req, res) => {
               res.status(500).json({ message: error.message });
        }
 };
+export const pichhlapujaChanda = async (req, res) => {
+       try {
+              const { amount } = req.body;
+              const { id } = req.query;
+              const user = await User.findById(id);
+              if (!user) return res.status(404).json({ message: 'User not found' });
+              user.pichhlapujaChanda = amount;
+              await user.save();
+              res.json({ message: 'Contribution updated', user });
+       } catch (error) {
+              res.status(500).json({ message: error.message });
+       }
+};
 export const khanaChanda = async (req, res) => {
        try {
               const { amount } = req.body;

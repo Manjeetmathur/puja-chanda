@@ -38,7 +38,7 @@ let s=1;
                             />
                      </div>
                      {st?
-                            <ul className='w-full max-w-2xl bg-white shadow-lg rounded-lg p-5'>
+                            <ul className='w-full max-w-2xl p-'>
                             <li className='text-lg font-semibold border-b pb-2 mb-3'>नाम</li>
                             {filteredUsers.map(user => (
                                    <div key={user?._id} className="flex justify-between items-center py-2 border-b">
