@@ -38,7 +38,7 @@ const UserDetails = () => {
         <ul className="space-y-4">
           <li className="flex justify-between items-center py-2 border-b border-gray-100">
             <span className="font-bold text-gray-800">नाम :</span>
-            <span className="text-md text-gray-700">{user.name}</span>
+            <span className="text-lg text-blue-700 font-semibold">{user.name}</span>
           </li>
           <li className="flex justify-between items-center py-2 border-b border-gray-100">
             <span className="font-bold text-gray-800">फोन नंबर :</span>
@@ -74,7 +74,11 @@ const UserDetails = () => {
           </li>
           <li className="flex justify-between items-center py-2 border-b border-gray-100">
             <span className="font-bold text-gray-800">Paid दिनांक :</span>
-            <span className="text-md text-gray-700">{user.date || "N/A"}</span>
+            <span className="text-md text-gray-700">{user.date || ""}</span>
+          </li>
+          <li className="flex justify-between items-center py-2 border-b border-gray-100">
+            <span className="font-bold text-gray-800">टिप्पाणी :</span>
+            <span className="text-md text-gray-700">{user.comment || "__"}</span>
           </li>
         </ul>
 

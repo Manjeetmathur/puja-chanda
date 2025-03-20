@@ -106,6 +106,19 @@ export const phone = async (req, res) => {
               res.status(500).json({ message: error.message });
        }
 };
+export const comment = async (req, res) => {
+       try {
+              const { id } = req.query;
+              const user = await User.findById(id);
+              if (!user) return res.status(404).json({ message: 'User not found' });
+              const { comment } = req.body
+              user.comment = comment;
+              await user.save();
+              res.json({ message: 'Contribution updated', user });
+       } catch (error) {
+              res.status(500).json({ message: error.message });
+       }
+};
 
 // Pay Chanda
 

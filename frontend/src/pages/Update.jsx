@@ -7,6 +7,7 @@ const Update = () => {
        const [user, setUser] = useState(null);
        const { id } = useParams();
        const [phoneNo, setPhoneNo] = useState('');
+       const [comment, setcomment] = useState('');
        const [khanaChanda, setKhanaChanda] = useState('');
        const [pujaChanda, setPujaChanda] = useState('');
        const [pichhlapujaChanda, setPichhlaPujaChanda] = useState('');
@@ -53,6 +54,12 @@ const Update = () => {
               axios.post(`${uri}/phone/id?id=${user._id}`, { phone: phoneNo }).then(() => {
                      updateChange()
                      setPhoneNo('')
+              });
+       };
+       const doComment = () => {
+              axios.post(`${uri}/comment/id?id=${user._id}`, { comment }).then(() => {
+                     updateChange()
+                     setcomment('')
               });
        };
        const khana = () => {
@@ -112,14 +119,15 @@ const Update = () => {
                             <h1 className='text-end my-1 ml-4 text-lg font-semibold text-red-700' onClick={deleteuser}>🗑️ Delete</h1>
                             {[
                                    { label: "नाम", value: user.name },
-                                   { label: "फोन नंबर", value: user.phone || "N/A" },
+                                   { label: "फोन नंबर", value: user.phone || "__" },
                                    { label: "पिछला पूजा चंदा", value: `₹${user.pichhlapujaChanda}` },
                                    { label: "पूजा चंदा", value: `₹${user.pujaChanda}` },
                                    { label: "खाना चंदा", value: `₹${user.khanaChanda}` },
                                    { label: "कुल चंदा", value: `₹${user.total}` },
                                    { label: "Paid पूजा", value: user.pujaPaid ? "हां" : "नहीं" },
                                    { label: "Paid खाना", value: user.khanaPaid ? "हां" : "नहीं" },
-                                   { label: "दिनांक", value: user.date || "N/A" },
+                                   { label: "दिनांक", value: user.date || "__" },
+                                   { label: "टिप्पाणी", value: user.comment || "__" },
                             ].map((item, index) => (
                                    <li key={index} className="flex justify-between items-center py-4 border-b border-gray-100 last:border-b-0">
                                           <span className="font-semibold text-gray-800 text-lg">{item.label} :</span>
@@ -154,6 +162,7 @@ const Update = () => {
                             <div className="space-y-6">
                                    {[
                                           { label: "Phone", value: phoneNo, setValue: setPhoneNo, handler: Phone },
+                                          { label: "comment", value: comment, setValue: setcomment, handler: doComment },
                                           { label: "Pichhla Puja Chanda", value: pichhlapujaChanda, setValue: setPichhlaPujaChanda, handler: pichhlapuja },
                                           { label: "Puja Chanda", value: pujaChanda, setValue: setPujaChanda, handler: puja },
                                           { label: "Khana Chanda", value: khanaChanda, setValue: setKhanaChanda, handler: khana },
