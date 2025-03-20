@@ -127,7 +127,7 @@ const Update = () => {
                                    { label: "Paid पूजा", value: user.pujaPaid ? "हां" : "नहीं" },
                                    { label: "Paid खाना", value: user.khanaPaid ? "हां" : "नहीं" },
                                    { label: "दिनांक", value: user.date || "__" },
-                                   { label: "टिप्पाणी", value: user.comment || "__" },
+                                   { label: "टिप्पणी", value: user.comment || "__" },
                             ].map((item, index) => (
                                    <li key={index} className="flex justify-between items-center py-4 border-b border-gray-100 last:border-b-0">
                                           <span className="font-semibold text-gray-800 text-lg">{item.label} :</span>
