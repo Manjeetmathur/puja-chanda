@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import a1 from '../assets/a1.mp3'
 
 const Prarthana = () => {
+       const audioRef = useRef(null);
+       const [isPlaying, setIsPlaying] = useState(false);
+
+       const handleTogglePlay = () => {
+              if (audioRef.current) {
+                     if (isPlaying) {
+                            audioRef.current.pause(); // Pause if already playing
+                     } else {
+                            audioRef.current.play(); // Play if paused
+                     }
+                     setIsPlaying(!isPlaying);
+              }
+       };
        return (
               <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex items-center justify-center py-12 px-4">
                      <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8 md:p-12 relative overflow-hidden">
@@ -13,6 +27,14 @@ const Prarthana = () => {
                                    हे मां मथुरासिनी!
                                    <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
                             </h1>
+                            <div className="text-center">
+                                   <audio ref={audioRef} src={a1} onEnded={() => setIsPlaying(false)}></audio>
+                                   <button
+                                          onClick={handleTogglePlay}
+                                          className="inline-block w-[155px]  mb-5 mx-auto py-2 bg-gradient-to-r from-green-600 text-md to-teal-600 text-white  font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300">
+                                          {isPlaying ? "⏸ Pause Audio" : "▶ Play Audio"}
+                                   </button>
+                            </div>
 
                             {/* Prayer Text */}
                             <div className="text-gray-700 text-base md:text-lg leading-relaxed space-y-6 animate-fade-in delay-200">

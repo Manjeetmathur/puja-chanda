@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import p1 from '../assets/p1.jpg';
-import p2 from '../assets/p3.jpg';
-import p3 from '../assets/p3.jpg';
 import p4 from '../assets/p4.jpg';
 import p5 from '../assets/p5.jpg';
 import p6 from '../assets/p6.jpg';
@@ -17,7 +15,7 @@ const Home = () => {
        const [users, setUsers] = useState([]);
        const [currentImage, setCurrentImage] = useState(0);
        const images = [p1, p4, p5, p6, p7, p8, p10, p9];
-
+     
        useEffect(() => {
               // Fetch users
               axios.get(`${uri}/all-users`)
@@ -38,7 +36,7 @@ const Home = () => {
                      <header className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
                             <div className="container mx-auto px-4 flex justify-center items-center">🙏
                                    <h1 className="text-3xl font-extrabold tracking-wider drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
-                                   जय मां मथुरासिनी 
+                                          जय मां मथुरासिनी
                                    </h1>
                                    🙏
                             </div>
@@ -105,6 +103,7 @@ const Home = () => {
                      >
                             मां मथुरासिनी प्रार्थना <span className="ml-2">➜</span>
                      </Link>
+                   
                      {/* Footer Section */}
                      <footer className="w-full bg-gray-800 text-white py-4">
                             <div className="container mx-auto px-4 text-center">
