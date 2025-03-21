@@ -107,8 +107,9 @@ const Home = () => {
                      {/* Footer Section */}
                      <footer className="w-full bg-gray-800 text-white py-4">
                             <div className="container mx-auto px-4 text-center">
-                                   <p className="text-sm">© 2025 माहुरी वैश्य मंडल चंदौरी | सभी अधिकार सुरक्षित</p>
+                                   <p className="text-sm">© 2025 माहुरी वैश्य मंडल चंदौरी | All rights reserved</p>
                             </div>
+                            <p className="text-[10px] text-center mt-3">Developed by Manjeet Mathur</p>
                      </footer>
 
                      {/* Background Decorations */}
