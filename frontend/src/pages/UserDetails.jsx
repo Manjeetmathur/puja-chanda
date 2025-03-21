@@ -94,12 +94,7 @@ const UserDetails = () => {
             <p className="text-lg text-blue-700 font-medium">
               और सामूहिक भोजन में बड़ों के प्रति व्यक्ति ₹70 और बच्चों के लिए ₹40 की राशि तय की गई
             </p>
-            <Link
-              to={`/pay/${user._id}`}
-              className="inline-block mt-4 px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300"
-            >
-              चंदा जमा करें ➡
-            </Link>
+           
           </div>
         }
       </div>
