@@ -8,7 +8,7 @@ import Pay from './pages/Pay';
 import Update from './pages/Update';
 import Prarthana from './pages/Prarthana';
 import Details from './pages/Details';
-import Expense from './pages/Expense';
+import Expense from './pages/Expense ';
 import UserAdmin from './pages/UserAdmin';
 import ExpenseAdmin from './pages/CreateExpenseAdmin';
 function App() {

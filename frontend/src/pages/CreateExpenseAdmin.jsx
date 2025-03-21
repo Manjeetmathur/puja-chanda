@@ -149,7 +149,7 @@ getExpense()
 
                                                         <ExpenseDetails expense={expense} />
                                                         <div className="flex flex-col justify-center items-center">
-                                                               <button className='border-2 p-1 rounded-2xl px-5 my-2 bg-red-400 text-white font-semibold' onClick={() => deleteExpense(expense._id)}>Delete</button>
+                                                               <button className='border-2 p-1 rounded-2xl px-5 my-2 bg-red-400 text-white font-semibold cursor-pointer' onClick={() => deleteExpense(expense._id)}>Delete</button>
                                                                {expense.user.length > 3 && <p className='text-yellow-400'>नाम: {expense.user}</p>}
                                                                {expense.message.length > 3 &&
                                                                       <p className='text-pink-700'>Comment : {expense.message || ""}</p>
