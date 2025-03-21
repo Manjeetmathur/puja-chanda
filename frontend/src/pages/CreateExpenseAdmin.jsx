@@ -67,7 +67,7 @@ getExpense()
                             <div className="space-y-6">
                                    {/* Input Fields */}
                                    <div className="flex flex-col gap-2">
-                                          <label className="text-lg font-semibold text-gray-800">व्यय शीर्षक</label>
+                                          <label className="text-lg font-semibold text-gray-800"> ख़र्च </label>
                                           <input
                                                  type="text"
                                                  placeholder="Enter expense title"
