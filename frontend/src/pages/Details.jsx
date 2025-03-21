@@ -50,13 +50,13 @@ const Details = () => {
                                                         key={user?._id}
                                                         className={`flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200`} 
                                                  >
-                                                        <span className={` ${user.pujaChanda === 0 && 'text-red-700' }   text-md text-blue-500 w-[120px]`}>
+                                                        <span className={` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 w-[120px]`}>
                                                                {index + 1}. {user.name}
                                                         </span>
-                                                        <span className={ ` ${user.pujaChanda === 0 && 'text-red-700' }   text-md text-blue-500 `}>
+                                                        <span className={ ` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
                                                                 {user.pujaChanda}
                                                         </span>
-                                                        <span className={` ${user.pujaChanda === 0 && 'text-red-700' }   text-md text-blue-500 `}>
+                                                        <span className={` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
                                                               {user.khanaChanda}
                                                         </span>
                                                        
