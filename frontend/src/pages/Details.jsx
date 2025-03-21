@@ -56,7 +56,7 @@ const Details = () => {
                                                         <span className={ ` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
                                                                 {user.pujaChanda}
                                                         </span>
-                                                        <span className={` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
+                                                        <span className={` ${user.khanaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
                                                               {user.khanaChanda}
                                                         </span>
                                                        
