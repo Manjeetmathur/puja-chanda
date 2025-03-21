@@ -52,12 +52,7 @@ const Home = () => {
                                           <p className="text-gray-600 text-lg max-w-lg mx-auto lg:mx-0 leading-relaxed animate-fade-in delay-200">
                                                  मां मथुरासिनी पूजा के लिए अपना योगदान दें और हमारी सांस्कृतिक विरासत को संजोए रखने में सहयोग करें।
                                           </p>
-                                          <Link
-                                                 to="/user"
-                                                 className="lg:inline-block mt-6 px-10 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 hidden"
-                                          >
-                                                 चंदे की जानकारी <span className="ml-2">➜</span>
-                                          </Link>
+                                         
                                    </div>
 
                                    {/* Image Carousel */}
@@ -83,16 +78,17 @@ const Home = () => {
                                                  </div>
                                           </div>
                                    </div>
-                                   <Link
-                                          to="/user"
-                                          className="inline-block mt-6 px-10 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 lg:hidden "
-                                   >
-                                          चंदे की जानकारी<span className="ml-2">➜</span>
-                                   </Link>
+                                  
 
                             </div>
 
                      </section>
+                     <Link
+                                          to="/user"
+                                          className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
+                                   >
+                                          चंदे की जानकारी<span className="ml-2">➜</span>
+                                   </Link>
                      <Link
                             to="/expense"
                             className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
