@@ -5,7 +5,7 @@ import expense from '../model/expenseModel.js';
 export const createexpense = async (req, res) => {
        try {
               const { title,date,user,amount,message } = req.body;
-              const newexpense = new expense({ title, date: date || '' ,user:user||"",amount,message:message|| ""});
+              const newexpense = new expense({ title, date: date+'/3/25' || '' ,user:user||"",amount,message:message|| ""});
               await newexpense.save();
               res.status(201).json({ message: 'User created successfully', expense: newexpense });
        } catch (error) {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ExpenseDetails = ({ expense }) => {
-       console.log(expense)
+       // console.log(expense)
        return (
               <div>
                      <li

@@ -13,7 +13,8 @@ const ExpenseAdmin = () => {
        const navigate = useNavigate()
        const createExpense = async () => {
               try {
-                     date = date+'/3/25'
+                     // date = date
+                     // setDate(date+'/3/25')
                      const expenseData = { title, amount, date, user: name, message };
                      await axios.post(`${expenseuri}/create-expense`, expenseData); // Replace with your actual endpoint
                      // setMessage('Expense created successfully!');
