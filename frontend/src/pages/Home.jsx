@@ -85,19 +85,19 @@ const Home = () => {
                      </section>
                      <Link
                                           to="/user"
-                                          className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
+                                          className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
                                    >
                                           चंदे की जानकारी<span className="ml-2">➜</span>
                                    </Link>
                      <Link
                             to="/expense"
-                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
                      >
                             खर्चे की जानकारी <span className="ml-2">➜</span>
                      </Link>
                      <Link
                             to="/prarthana"
-                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
                      >
                             मां मथुरासिनी प्रार्थना <span className="ml-2">➜</span>
                      </Link>
