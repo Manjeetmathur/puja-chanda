@@ -7,6 +7,7 @@ import UserDetails from './pages/UserDetails';
 import Pay from './pages/Pay';
 import Update from './pages/Update';
 import Prarthana from './pages/Prarthana';
+import Details from './pages/Details';
 function App() {
 
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/admin" element={<Admin />} />
           <Route path="/prarthana" element={<Prarthana />} />
           <Route path="/user" element={<User />} />
+          <Route path="/details" element={<Details />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/pay/:id" element={<Pay/>} />
           <Route path="/user/:id" element={<UserDetails />} />

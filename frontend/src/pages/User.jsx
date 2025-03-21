@@ -39,6 +39,11 @@ const User = () => {
        users.map(itm => {
               total += itm.pujaChanda
        })
+       let bhojantotal = 0;
+       users.map(itm => {
+              // console.log(itm.khanaChanda)
+              bhojantotal += itm.khanaChanda
+       })
        return (
               <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-10 px-4">
                      {/* Heading */}
@@ -46,9 +51,33 @@ const User = () => {
                             मां मथुरासिनी पूजा चंदा
                             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
                      </h1>
+                     <div className="flex gap-5 items-center justify-center mb-5">
+                            <h1 className="text-lg md:text-4xl font-extrabold text-orange-600  relative animate-fade-in">
+                                   💰 कुल पूजा चंदा : ₹ {total}
+                            </h1>
+                            <Link
+                                   to={`/details`}
+                                   className="text-blue-500 text-sm font-medium hover:text-orange-800 hover:underline transition-all duration-200  border-2 rounded-xl px-2"
+                            >
+                                   Details ➡
+                            </Link>
+                     </div>
+                     <div className="flex gap-3 items-center justify-center mb-5">
+                            <h1 className="text-lg md:text-4xl font-extrabold text-orange-600 m relative animate-fade-in">
+                                   💰 कुल भोजन चंदा : ₹ {bhojantotal}
+
+                            </h1>
+                            <Link
+                                   to={`/details`}
+                                   className="text-blue-500 text-sm font-medium hover:text-orange-800 hover:underline transition-all duration-200  border-2 rounded-xl px-2"
+                            >
+                                   Details ➡
+                            </Link>
+                     </div>
+
                      <h1 className="text-lg md:text-4xl font-extrabold text-orange-600 mb-8 relative animate-fade-in">
-                      💰 कुल पूजा चंदा : ₹ {total}
-                           
+                            💰 कुल चंदा : ₹ {total + bhojantotal}
+
                      </h1>
 
                      {/* Search Bar */}
