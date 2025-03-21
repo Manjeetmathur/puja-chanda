@@ -34,7 +34,7 @@ const Expense = () => {
                             <ul className="space-y-6">
                                    {/* Header Row */}
                                    <li className="flex justify-between items-center py-3 hover:bg-orange-50 transition-all duration-200 border-t-2 border-b-2">
-                                          <span className='text-blue-400 w-[150px]'>शीर्षक</span>
+                                          <span className='text-blue-400 w-[150px]'>ख़र्च</span>
                                           <span className='text-green-700 w-[50px]'>राशि</span>
                                           <span className='text-yellow-700 w-[50px]'>दिनांक</span>
                                    </li>
