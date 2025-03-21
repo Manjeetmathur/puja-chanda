@@ -7,6 +7,7 @@ dotenv.config({
        path:"./.env"
 });
 import userRoutes from './routes/userRoutes.js';
+import expenseRouter from './routes/expenseRouter.js';
 
 const app = express();
 
@@ -21,6 +22,7 @@ app.use(cors(
 
 // // Routes
 app.use('/user', userRoutes);
+app.use('/expense', expenseRouter);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)

@@ -12,15 +12,11 @@ import p10 from '../assets/p9.jpg';
 import { uri } from '../backend/Uri';
 
 const Home = () => {
-       const [users, setUsers] = useState([]);
        const [currentImage, setCurrentImage] = useState(0);
        const images = [p1, p4, p5, p6, p7, p8, p10, p9];
      
        useEffect(() => {
-              // Fetch users
-              axios.get(`${uri}/all-users`)
-                     .then(response => setUsers(response.data))
-                     .catch(error => console.error('Error fetching users:', error));
+              
 
               // Image rotation every 3 seconds
               const interval = setInterval(() => {
@@ -97,6 +93,12 @@ const Home = () => {
                             </div>
 
                      </section>
+                     <Link
+                            to="/expense"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"
+                     >
+                            खर्चे की जानकारी <span className="ml-2">➜</span>
+                     </Link>
                      <Link
                             to="/prarthana"
                             className="inline-block w-[255px]  mb-5 mx-auto px-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300"

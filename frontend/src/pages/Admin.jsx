@@ -1,113 +1,76 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import p1 from '../assets/p1.jpg';
+import p4 from '../assets/p4.jpg';
+import p5 from '../assets/p5.jpg';
+import p6 from '../assets/p6.jpg';
+import p7 from '../assets/p7.jpg';
+import p8 from '../assets/p8.jpg';
+import p9 from '../assets/p10.jpg';
+import p10 from '../assets/p9.jpg';
 import { uri } from '../backend/Uri';
 
-const transliterate = (hindiText) => {
-  const map = {
-    'अ': 'a', 'आ': 'aa', 'इ': 'i', 'ई': 'ee', 'उ': 'u', 'ऊ': 'oo', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au',
-    'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ट': 't', 'ठ': 'th',
-    'ड': 'd', 'ढ': 'dh', 'ण': 'n', 'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n', 'प': 'p', 'फ': 'ph',
-    'ब': 'b', 'भ': 'bh', 'म': 'm', 'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's',
-    'ह': 'h', 'ा': 'a', 'ि': 'i', 'ी': 'ee', 'ु': 'u', 'ू': 'oo', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au'
-  };
-  return hindiText.split('').map(char => map[char] || char).join('');
-};
-let count=1;
 const Admin = () => {
-  const [users, setUsers] = useState([]);
-  const [name, setName] = useState('');
-  const [search, setSearch] = useState('');
- 
-  const getUser = () => {
-       axios.get(`${uri}/all-users`)
-      .then(response => setUsers(response.data))
-      .catch(error => console.error('Error fetching users:', error));
-  }
-   
-  useEffect(() => {
-    getUser()
-  }, []);
+       const [currentImage, setCurrentImage] = useState(0);
+       const images = [p1, p4, p5, p6, p7, p8, p10, p9];
 
-  const createUser = async () => {
-    await axios.post(`${uri}/create-user`, { name }).then(() => { getUser() 
-       setName('')
-    });
-  };
+       useEffect(() => {
 
-  const filteredUsers = users.filter(user => {
-    const userName = user.name.toLowerCase();
-    const transliteratedName = transliterate(user.name).toLowerCase();
-    const query = search.toLowerCase();
-    return userName.includes(query) || transliteratedName.includes(query);
-  });
+              // Image rotation every 3 seconds
+              const interval = setInterval(() => {
+                     setCurrentImage((prev) => (prev + 1) % images.length);
+              }, 2000);
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-12 px-4">
-      {/* Heading */}
-      <h1 className="text-3xl md:text-4xl font-extrabold text-orange-600 mb-10 relative animate-fade-in">
-        Admin Dashboard
-        <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-36 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
-      </h1>
+              return () => clearInterval(interval); // Cleanup on unmount
+       }, [images.length]);
 
-      {/* Create User Section */}
-      <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-6 mb-8 border border-gray-100 animate-fade-in delay-200">
-        <h2 className="text-xl font-semibold text-gray-800 mb-4">Create User</h2>
-        <div className="flex gap-4">
-          <input
-            type="text"
-            placeholder="Enter name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full p-3 border border-gray-800 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300 text-gray-700 placeholder-gray-400"
-          />
-          <button
-            onClick={createUser}
-            className="px-3 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white font-semibold rounded-full shadow-md hover:from-blue-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300"
-          >
-            Create
-          </button>
-        </div>
-      </div>
+       return (
+              <div className="relative min-h-screen bg-orange-100 flex flex-col overflow-hidden">
+                     {/* Header Section */}
+                     <header className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
+                            <div className="container mx-auto px-4 flex justify-center items-center">🙏
+                                   <h1 className="text-3xl font-extrabold tracking-wider drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
+                                          जय मां मथुरासिनी
+                                   </h1>
+                                   🙏
+                            </div>
+                     </header>
 
-      {/* Search Bar */}
-      <div className="w-full max-w-3xl mb-8">
-        <input
-          type="text"
-          placeholder="🔍 Search user by name"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full p-3 border border-gray-800 bg-white rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300 text-gray-700 placeholder-gray-400"
-        />
-      </div>
+                     {/* Hero Section */}
+                    
+                     <Link
+                            to="/user-admin"
+                            className="bg-gradient-to-r mt-36 from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full w-[250px] text-center p-2 flex  justify-center items-center mx-auto mb-4"
+                     >
+                            Create-Update-User<span className="ml-2">➜</span>
+                     </Link>
 
-      {/* User List */}
-      <ul className="w-full max-w-3xl bg-white shadow-xl rounded-xl p-6 border border-gray-100 animate-fade-in delay-300">
-        <li className="font-bold text-lg text-gray-800 border-b-2 border-orange-200 pb-3 mb-4 flex justify-between">
-          <span>Users</span>
-          <span>Actions</span>
-        </li>
-        {filteredUsers.length > 0 ? (
-          filteredUsers.map((user,idx) => (
-            <li
-              key={user._id}
-              className="flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200"
-            >
-              <span className="text-gray-800 font-medium">{idx+1}. {user?.name}</span>
-              <Link
-                to={`/update/${user._id}`}
-                className="px-2 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-full shadow-md hover:from-green-600 hover:to-green-700 transform hover:scale-105 transition-all duration-300"
-              >
-                Update 
-              </Link>
-            </li>
-          ))
-        ) : (
-          <li className="text-md text-gray-500 text-center py-4">No users found</li>
-        )}
-      </ul>
-    </div>
-  );
+                     <Link
+                            to="/user"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
+                     >
+                            
+                            चंदे की जानकारी <span className="ml-2">➜</span>
+                     </Link>
+                     <Link
+                            to="/expense-admin"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
+                     >
+                            ख़र्च लिखें
+                            <span className="ml-2">➜</span>
+                     </Link>
+                     <Link
+                            to="/expense"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
+                     >
+                            खर्चे की जानकारी <span className="ml-2">➜</span>
+                     </Link>
+                    
+
+                    
+              </div>
+       );
 };
 
 export default Admin;
