@@ -104,12 +104,14 @@ const User = () => {
                                                         key={user?._id}
                                                         className="flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200"
                                                  >
-                                                        <span className="text-md text-gray-700">
-                                                               {index + 1}. {user.name}
-                                                        </span>
+                                                        <Link to={`/user/${user._id}`}>
+                                                               <span className={` ${user.pujaChanda === 0 && 'text-yellow-400' }  text-md text-blue-500 w-[120px]`}>
+                                                                      {index + 1}. {user.name}
+                                                               </span>
+                                                        </Link>
                                                         <Link
                                                                to={`/user/${user._id}`}
-                                                               className="text-orange-600 font-medium hover:text-orange-800 hover:underline transition-all duration-200"
+                                                               className="text-blue-600 font-medium hover:text-orange-800 hover:underline transition-all duration-200"
                                                         >
                                                                Details ➡
                                                         </Link>
