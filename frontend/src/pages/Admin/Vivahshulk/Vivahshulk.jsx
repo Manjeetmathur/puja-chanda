@@ -32,7 +32,7 @@ const Vivahshulk = () => {
      
        const paidshulk = async(id) => {
               const date = new Date(Date.now()).toLocaleDateString('en-IN')
-              console.log(date)
+              // console.log(date)
               
               await axios.post(`${vivahshulk}/paid-shulk`,{date,id})
               getUser()

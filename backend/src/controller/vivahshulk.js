@@ -5,7 +5,7 @@ import VivahShulk from '../model/vivahshulk.js';
 export const createUser = async (req, res) => {
        try {
               const { name, shulk,comment ,marriageDate} = req.body;
-              const newUser = new VivahShulk({ name, comment: comment || '',shulk:shulk||0,date:date||"",marriageDate });
+              const newUser = new VivahShulk({ name, comment: comment || '',shulk:shulk||0,marriageDate });
               await newUser.save();
               // console.log(newUser)
               res.status(201).json({ message: 'User created successfully', user: newUser });
