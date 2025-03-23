@@ -11,12 +11,11 @@ const Vivahshulk = () => {
        const [message, setMessage] = useState(''); // For success/error feedback
        const createUser = async () => {
               try {
-                     const userData = { shulk: amount, date, name, comment: message, marriageDate };
+                     const userData = { shulk: amount,  name, comment: message, marriageDate };
                      await axios.post(`${vivahshulk}/create-user`, userData); // Replace 
                      getUser()
                      setmarriageDate('');
                      setAmount('');
-                     setDate('');
                      setName('');
                      setMessage('')
 
