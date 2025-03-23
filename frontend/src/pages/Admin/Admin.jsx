@@ -53,7 +53,7 @@ const Admin = () => {
                             to="/vivah-admin"
                             className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
                      >
-                            विवाह शुल्क की जानकारी <span className="ml-2">➜</span>
+                            विवाह शुल्क लिखें <span className="ml-2">➜</span>
                      </Link>
                      <Link
                             to="/vivah-shulk-details"
