@@ -5,7 +5,7 @@ const VivahShulkDetails = ({ user }) => {
               <div className="flex flex-col items-center w-full">
                      <div className="flex flex-col justify-center">
                             {/* Header Row - Hidden on small screens */}
-                            <div className=" flex flex-col gap-3 items-start pl-5 py-3 font-bold text-lg border-t-2 border-b-2 border-orange-200 bg-orange-50 justify-between">
+                            <div className=" flex flex-col gap-3 items-start pl-5 py-3 font-bold text-lg border-t-2 border-b-2 border-orange-200 bg-orange-50 justify-between px-6 w-[280px]">
                                    <div className="flex items-center justify-center gap-5">
                                           <div className=" text-blue-600 mr-10 text-start flex justify-items-start items-start">नाम :</div>
                                           <div className="text-md sm:text-md text-blue-700  sm:w-auto truncate">{user.name}</div>
