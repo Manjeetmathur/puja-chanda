@@ -8,6 +8,7 @@ dotenv.config({
 });
 import userRoutes from './routes/userRoutes.js';
 import expenseRouter from './routes/expenseRouter.js';
+import vivahshulk from './routes/vivahshulk.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(cors(
 // // Routes
 app.use('/user', userRoutes);
 app.use('/expense', expenseRouter);
+app.use('/vivahshulk', vivahshulk);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI)

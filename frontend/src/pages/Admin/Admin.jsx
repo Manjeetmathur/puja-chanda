@@ -1,29 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import p1 from '../assets/p1.jpg';
-import p4 from '../assets/p4.jpg';
-import p5 from '../assets/p5.jpg';
-import p6 from '../assets/p6.jpg';
-import p7 from '../assets/p7.jpg';
-import p8 from '../assets/p8.jpg';
-import p9 from '../assets/p10.jpg';
-import p10 from '../assets/p9.jpg';
-import { uri } from '../backend/Uri';
+import { uri } from '../../backend/Uri';
 
 const Admin = () => {
-       const [currentImage, setCurrentImage] = useState(0);
-       const images = [p1, p4, p5, p6, p7, p8, p10, p9];
 
-       useEffect(() => {
-
-              // Image rotation every 3 seconds
-              const interval = setInterval(() => {
-                     setCurrentImage((prev) => (prev + 1) % images.length);
-              }, 2000);
-
-              return () => clearInterval(interval); // Cleanup on unmount
-       }, [images.length]);
+       
 
        return (
               <div className="relative min-h-screen bg-orange-100 flex flex-col overflow-hidden">
@@ -65,6 +47,19 @@ const Admin = () => {
                             className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
                      >
                             खर्चे की जानकारी <span className="ml-2">➜</span>
+                     </Link>
+                    
+                     <Link
+                            to="/vivah-admin"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
+                     >
+                            विवाह शुल्क की जानकारी <span className="ml-2">➜</span>
+                     </Link>
+                     <Link
+                            to="/vivah-shulk-details"
+                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
+                     >
+                            विवाह शुल्क की जानकारी <span className="ml-2">➜</span>
                      </Link>
                     
 

@@ -19,8 +19,8 @@ const Prarthana = () => {
               <div className="min-h-screen bg-gradient-to-b from-orange-50 to-white flex items-center justify-center py-12 px-4">
                      <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8 md:p-12 relative overflow-hidden">
                             {/* Decorative Background Element */}
-                            <div className="absolute top-0 left-0 w-40 h-40 bg-orange-200 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
-                            <div className="absolute bottom-0 right-0 w-40 h-40 bg-pink-200 rounded-full opacity-20 translate-x-1/2 translate-y-1/2"></div>
+                            <div className="absolute top-0 left-0 w-40 h-40 bg-pink-500 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2"></div>
+                            <div className="absolute bottom-0 right-0 w-40 h-40 bg-pink-500 rounded-full opacity-20 translate-x-1/2 translate-y-1/2"></div>
 
                             {/* Heading */}
                             <h1 className="text-3xl md:text-4xl font-bold text-orange-600 text-center mb-8 relative animate-fade-in">

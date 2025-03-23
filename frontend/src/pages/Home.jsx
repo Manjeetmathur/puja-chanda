@@ -74,7 +74,7 @@ const Home = () => {
                                                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent"></div>
                                                  {/* Decorative Badge */}
                                                  <div className="absolute bottom-6 left-6 bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-semibold animate-pulse">
-                                                        मां का आशीर्वाद
+                                                 जय मां मथुरासिनी
                                                  </div>
                                           </div>
                                    </div>
@@ -107,7 +107,7 @@ const Home = () => {
                             <div className="container mx-auto px-4 text-center">
                                    <p className="text-sm">© 2025 माहुरी वैश्य मंडल चंदौरी | All rights reserved</p>
                             </div>
-                            <p className="text-[10px] text-center mt-3">Developed by Manjeet Mathur</p>
+                            <p className="text-[15px] text-center mt-3">Developed by Manjeet Mathur</p>
                      </footer>
 
                      {/* Background Decorations */}

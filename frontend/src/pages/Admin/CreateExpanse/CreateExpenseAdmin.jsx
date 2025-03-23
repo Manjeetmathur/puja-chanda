@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { expenseuri, uri } from '../backend/Uri'; // Assuming you have a backend URI setup
+import { expenseuri, uri } from '../../../backend/Uri.js'; // Assuming you have a backend URI setup
 import { useNavigate } from 'react-router-dom';
-import ExpenseDetails from './ExpenseDetails';
+import ExpenseDetails from '../../ExpenseDetails.jsx';
 
 const ExpenseAdmin = () => {
        const [title, setTitle] = useState('');
