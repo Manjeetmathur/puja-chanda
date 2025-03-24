@@ -9,9 +9,10 @@ const Vivahshulk = () => {
        const [marriageDate, setmarriageDate] = useState('');
        const [name, setName] = useState('');
        const [message, setMessage] = useState(''); // For success/error feedback
+       const [date, setDate] = useState(''); // For success/error feedback
        const createUser = async () => {
               try {
-                     const userData = { shulk: amount,  name, comment: message, marriageDate };
+                     const userData = { shulk: amount, name, comment: message, marriageDate };
                      await axios.post(`${vivahshulk}/create-user`, userData); // Replace 
                      getUser()
                      setmarriageDate('');
@@ -29,14 +30,7 @@ const Vivahshulk = () => {
                      getUser()
               });
        };
-     
-       const paidshulk = async(id) => {
-              const date = new Date(Date.now()).toLocaleDateString('en-IN')
-              // console.log(date)
-              
-              await axios.post(`${vivahshulk}/paid-shulk`,{date,id})
-              getUser()
-       }
+
        const [users, setuser] = useState([])
 
        const getUser = () => {
@@ -51,6 +45,19 @@ const Vivahshulk = () => {
               getUser()
        }, []);
 
+       const paidshulk = async (id,paid) => {
+              try {
+
+                     if (!paid && date.length === 0) {
+                            throw new Error("Enter Date Please ...")
+                     }
+                     await axios.post(`${vivahshulk}/paid-shulk`, { date, id })
+                     setDate('')
+                     getUser()
+              } catch (error) {
+                     alert(error.message)
+              }
+       }
        let totalamount = 0;
        users?.map((e) => { totalamount += e.amount })
 
@@ -126,25 +133,30 @@ const Vivahshulk = () => {
                      </div>
                      <div className="w-full max-w-3x  py-6 ">
                             <ul className="space-y-6">
-                                   {/* Header Row */}
-                                
-
-                                   {/* Expense Items */}
                                    {users?.length > 0 ? (
                                           users?.map((user, index) => (
                                                  <div key={index} className=" border-b-2 pb-2">
 
                                                         <VivahShulkDetails user={user} />
                                                         <div className="flex flex-col justify-center items-center">
-                                                              <div className="flex  gap-3">
-                                                              <button
-                                                                      onClick={()=>paidshulk(user._id)}
-                                                                      className={`my-3 px-5 py-2 font-medium rounded-full shadow-sm transition-all duration-300 text-white ${user.paid ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} flex justify-center `}
-                                                               >
-                                                                      {user.paid ? 'Click to Unpaid' : 'Click to Paid'}
-                                                               </button>
+                                                               <div className="flex  gap-3">
+                                                                      {!user.paid && <input type="text"
+                                                                             placeholder='Enter  Date'
+                                                                             className='border-2 my-3 rounded-2xl px-2'
+                                                                             value={date}
+                                                                             onChange={(e) => setDate(e.target.value)} />}
+                                                                      <button
+                                                                             onClick={() => paidshulk(user._id,user.paid)}
+                                                                             className={`my-3 px-5 py-2 font-medium rounded-full shadow-sm transition-all duration-300 text-white ${user.paid ? 'bg-red-500 hover:bg-red-600' : 'bg-green-500 hover:bg-green-600'} flex justify-center `}
+                                                                      >
+                                                                             {user.paid ? 'Click to Unpaid' : <div className="">
+                                                                                    <p>Click to Paid</p>
+                                                                             </div>}
+                                                                      </button>
+
+
+                                                               </div>
                                                                <button className='my-3 px-5 py-2 font-medium rounded-full shadow-sm transition-all duration-300 text-white bg-red-500 hover:bg-red-600' onClick={() => deleteuser(user._id)}>Delete</button>
-                                                              </div>
                                                         </div>
                                                  </div>
                                           ))

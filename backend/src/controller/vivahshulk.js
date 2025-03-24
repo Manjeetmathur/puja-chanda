@@ -35,6 +35,28 @@ export const Paid = async (req, res) => {
               res.json({ message: error.message });
        }
 };
+// export const date = async (req, res) => {
+//        try {
+              
+//               const {date,id} = req.body
+//               // console.log(date)
+//               const user = await VivahShulk.findById(id);
+//               if (!user) return res.status(404).json({ message: 'User not found' });
+//               if(user.paid){
+//                      user.paid = !user.paid;
+//                      user.date = ""
+//               }else{
+//                      user.paid = !user.paid;
+//                      user.date = date
+//               }
+              
+             
+//               await user.save();
+//               res.json({ message: 'Payment status toggled', user });
+//        } catch (error) {
+//               res.json({ message: error.message });
+//        }
+// };
 
 // Get user details
 export const getUserDetails = async (req, res) => {
