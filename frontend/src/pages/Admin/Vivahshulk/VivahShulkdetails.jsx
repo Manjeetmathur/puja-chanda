@@ -19,9 +19,9 @@ const VivahShulkDetails = ({ user }) => {
                                    {/* Comment (if applicable) */}
                                    {user.comment?.length > 3 && (
 
-                                          <div className="text-xs sm:text-md text-pink-700 mt-2 sm:mt-0 sm:col-div-3 truncate text-wrap w-[250px] ">
+                                          <div className="text-md sm:text-md text-pink-700 mt-2 sm:mt-0 sm:col-div-3 truncate text-wrap w-[250px] ">
 
-                                                 टिप्पणी: {user.comment}
+                                                  {user.comment}
                                           </div>
                                    )}
 
