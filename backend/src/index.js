@@ -20,7 +20,9 @@ app.use(cors(
               credentials:true
        }
 ));
-
+app.use('/', async(req,res)=>{
+       res.send("backend is running")
+})
 // // Routes
 app.use('/user', userRoutes);
 app.use('/expense', expenseRouter);
