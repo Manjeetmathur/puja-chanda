@@ -20,7 +20,7 @@ app.use(cors(
               credentials:true
        }
 ));
-app.use('/', async(req,res)=>{
+app.get('/', async(req,res)=>{
        res.send("backend is running")
 })
 // // Routes

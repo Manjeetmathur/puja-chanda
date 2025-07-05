@@ -27,8 +27,8 @@ const User = () => {
                      })
                      .catch(error => console.error('Error fetching users:', error));
        }, []);
-
-       const filteredUsers = users.filter(user => {
+console.log(users)
+       const filteredUsers = users?.filter(user => {
               const userName = user.name.toLowerCase();
               const transliteratedName = transliterate(user.name).toLowerCase();
               const query = search.toLowerCase();

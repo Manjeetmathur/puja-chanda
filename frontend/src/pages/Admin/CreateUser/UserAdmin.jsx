@@ -35,7 +35,7 @@ const UserAdmin = () => {
     });
   };
 
-  const filteredUsers = users.filter(user => {
+  const filteredUsers = users?.filter(user => {
     const userName = user.name.toLowerCase();
     const transliteratedName = transliterate(user.name).toLowerCase();
     const query = search.toLowerCase();
