@@ -1,71 +1,75 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { uri } from '../../backend/Uri';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const Admin = () => {
 
-       
+  const menu = [
+    {
+      title: "Create / Update User",
+      path: "/user-admin",
+      color: "from-green-500 to-teal-600",
+    },
+    {
+      title: "चंदे की जानकारी",
+      path: "/user",
+      color: "from-blue-500 to-indigo-600",
+    },
+    {
+      title: "विवाह शुल्क लिखें",
+      path: "/vivah-admin",
+      color: "from-pink-500 to-red-500",
+    },
+    {
+      title: "विवाह शुल्क की जानकारी",
+      path: "/vivah-shulk-details",
+      color: "from-purple-500 to-indigo-600",
+    }
+  ];
 
-       return (
-              <div className="relative min-h-screen bg-orange-100 flex flex-col overflow-hidden">
-                     {/* Header Section */}
-                     <header className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
-                            <div className="container mx-auto px-4 flex justify-center items-center">🙏
-                                   <h1 className="text-3xl font-extrabold tracking-wider drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
-                                          जय मां मथुरासिनी
-                                   </h1>
-                                   🙏
-                            </div>
-                     </header>
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-orange-100 to-orange-50 flex flex-col">
 
-                     {/* Hero Section */}
-                    
-                     <Link
-                            to="/user-admin"
-                            className="bg-gradient-to-r mt-36 from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full w-[250px] text-center p-2 flex  justify-center items-center mx-auto mb-4"
-                     >
-                            Create-Update-User<span className="ml-2">➜</span>
-                     </Link>
+      {/* Header */}
+      <header className="bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
+        <div className="text-center">
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide">
+            🙏 जय मां मथुरासिनी 🙏
+          </h1>
+        </div>
+      </header>
 
-                     <Link
-                            to="/user"
-                            className="inline-block w-[255px]  mb-15 mx-auto px-6 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
-                     >
-                            
-                            चंदे की जानकारी <span className="ml-2">➜</span>
-                     </Link>
-                     {/* <Link
-                            to="/expense-admin"
-                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
-                     >
-                            ख़र्च लिखें
-                            <span className="ml-2">➜</span>
-                     </Link>
-                     <Link
-                            to="/expense"
-                            className="inline-block w-[255px]  mb-15 mx-auto px-6 py-2 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
-                     >
-                            खर्चे की जानकारी <span className="ml-2">➜</span>
-                     </Link> */}
-                    
-                     <Link
-                            to="/vivah-admin"
-                            className="inline-block w-[255px]  mb-5 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
-                     >
-                            विवाह शुल्क लिखें <span className="ml-2">➜</span>
-                     </Link>
-                     <Link
-                            to="/vivah-shulk-details"
-                            className="inline-block w-[255px]  mb-15 mx-auto px-6 py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white text-xl font-semibold rounded-full shadow-xl hover:from-green-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 animate-fade-in delay-300 text-center"
-                     >
-                            विवाह शुल्क की जानकारी 
-                     </Link>
-                    
+      {/* Dashboard */}
+      <div className="flex-1 flex items-center justify-center px-4 py-10">
 
-                    
-              </div>
-       );
+        <div className="w-full max-w-xl">
+
+          {/* Title */}
+          <h2 className="text-center text-xl sm:text-2xl font-bold text-orange-700 mb-8">
+            Admin Dashboard
+          </h2>
+
+          {/* Menu Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            {menu.map((item, index) => (
+              <Link
+                key={index}
+                to={item.path}
+                className={`bg-gradient-to-r ${item.color} text-white rounded-xl shadow-md p-5 text-center font-semibold text-lg hover:scale-105 transition-transform duration-300`}
+              >
+                {item.title}
+                <div className="text-sm mt-1 opacity-80">Open ➜</div>
+              </Link>
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
 };
 
 export default Admin;

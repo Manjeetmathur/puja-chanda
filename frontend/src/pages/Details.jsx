@@ -1,77 +1,97 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { uri } from '../backend/Uri';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+
+const AVAILABLE_YEARS = ["2024", "2025", "2026", "2027", "2028", "2029", "2030"];
 
 const Details = () => {
+       const [searchParams, setSearchParams] = useSearchParams();
+       const yearFromUrl = searchParams.get('year');
+       const initialYear = yearFromUrl && AVAILABLE_YEARS.includes(yearFromUrl) ? yearFromUrl : "2025";
        const [users, setUsers] = useState([]);
        const [st, setSt] = useState(false);
-       const [search, setSearch] = useState('');
+       const [selectedYear, setSelectedYear] = useState(initialYear);
 
        useEffect(() => {
-              axios.get(`${uri}/all-users`)
+              setSelectedYear(initialYear);
+       }, [initialYear]);
+
+       useEffect(() => {
+              setSt(false);
+              axios.get(`${uri}/all-users`, { params: { year: selectedYear } })
                      .then(response => {
                             setUsers(response.data);
                             setSt(true);
                      })
                      .catch(error => console.error('Error fetching users:', error));
-       }, []);
-       let total = 0;
-       users.map(itm => {
-              total += itm.pujaChanda
-       })
-       let bhojantotal = 0;
-       users.map(itm => {
-              // console.log(itm.khanaChanda)
-              bhojantotal += itm.khanaChanda
-       })
+       }, [selectedYear]);
+
+       const total = users.reduce((sum, u) => sum + (Number(u.pujaChanda) || 0), 0);
+       const bhojantotal = users.reduce((sum, u) => sum + (Number(u.khanaChanda) || 0), 0);
+       const grandTotal = total + bhojantotal;
+
        return (
               <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-10 px-4">
-                     {/* Heading */}
-                     <h1 className="text-xl md:text-4xl font-extrabold text-orange-600 mb-8 relative animate-fade-in">
+                     <h1 className="text-xl md:text-4xl font-extrabold text-orange-600 mb-6 relative animate-fade-in">
                             मां मथुरासिनी पूजा चंदा
                             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
                      </h1>
-                     
-                     
 
+                     {/* Year selector - same as User.jsx, totals from year table */}
+                     <div className="w-full max-w-lg mb-4 flex items-center justify-center gap-3">
+                            <label className="text-sm font-medium text-gray-700">वर्ष (Year):</label>
+                            <select
+                                   value={selectedYear}
+                                   onChange={(e) => {
+                                          const y = e.target.value;
+                                          setSelectedYear(y);
+                                          setSearchParams({ year: y });
+                                   }}
+                                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white font-medium text-orange-600"
+                            >
+                                   {AVAILABLE_YEARS.map((y) => (
+                                          <option key={y} value={y}>{y}</option>
+                                   ))}
+                            </select>
+                            <span className="text-xs text-gray-500">वर्ष {selectedYear} के अनुसार</span>
+                     </div>
 
-                     {/* User List or Loading */}
                      {st ? (
                             <ul className="w-full max-w-lg bg-white shadow-xl rounded-xl p-6 animate-fade-in delay-200">
                                    <li className="text-lg font-semibold text-gray-800 border-b-2 border-orange-200 pb-3 mb-4 flex justify-between">
                                           <span>नाम</span>
-                                          <span className='ml-20'>पूजा</span>
+                                          <span className="ml-20">पूजा</span>
                                           <span>भोजन</span>
                                    </li>
                                    {users.length > 0 ? (
                                           users.map((user, index) => (
                                                  <li
                                                         key={user?._id}
-                                                        className={`flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200`} 
+                                                        className="flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200"
                                                  >
-                                                        <span className={` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 w-[120px]`}>
+                                                        <span className={`${(Number(user.pujaChanda) || 0) === 0 ? "text-yellow-500" : "text-blue-500"} text-md w-[120px]`}>
                                                                {index + 1}. {user.name}
                                                         </span>
-                                                        <span className={ ` ${user.pujaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
-                                                                {user.pujaChanda}
+                                                        <span className={`${(Number(user.pujaChanda) || 0) === 0 ? "text-yellow-500" : "text-blue-500"} text-md`}>
+                                                                {user.pujaChanda ?? 0}
                                                         </span>
-                                                        <span className={` ${user.khanaChanda === 0 && 'text-yellow-500' }   text-md text-blue-500 `}>
-                                                              {user.khanaChanda}
+                                                        <span className={`${(Number(user.khanaChanda) || 0) === 0 ? "text-yellow-500" : "text-blue-500"} text-md`}>
+                                                              {user.khanaChanda ?? 0}
                                                         </span>
-                                                       
                                                  </li>
                                           ))
                                    ) : (
                                           <li className="text-md text-gray-500 text-center py-4">कोई परिणाम नहीं मिला</li>
                                    )}
                                    <li className="text-lg font-semibold text-gray-800 border-b-2 border-orange-200 pb-3 my-4 flex justify-between">
-                                          <span className='w-[100px]'>कुल</span>
+                                          <span className="w-[100px]">कुल</span>
                                           <span>₹ {total}</span>
                                           <span>₹ {bhojantotal}</span>
                                    </li>
-                                   <span></span>
-                                   <span className="font-bold text-gray-800 border-b-2 border-orange-200 pb-3 my-4 flex justify-between">₹ {bhojantotal+total}</span>
+                                   <li className="font-bold text-gray-800 border-b-2 border-orange-200 pb-3 my-4">
+                                          कुल योग: ₹ {grandTotal}
+                                   </li>
                             </ul>
                      ) : (
                             <div className="flex items-center justify-center text-lg font-semibold text-gray-600 animate-pulse">
@@ -83,7 +103,7 @@ const Details = () => {
                             </div>
                      )}
               </div>
-       )
-}
+       );
+};
 
-export default Details
+export default Details;

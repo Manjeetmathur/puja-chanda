@@ -1,135 +1,159 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { uri } from '../backend/Uri';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { uri } from "../backend/Uri";
+
+const AVAILABLE_YEARS = ["2024", "2025", "2026", "2027", "2028", "2029", "2030"];
 
 const transliterate = (hindiText) => {
        const map = {
               'अ': 'a', 'आ': 'aa', 'इ': 'i', 'ई': 'ee', 'उ': 'u', 'ऊ': 'oo', 'ए': 'e', 'ऐ': 'ai', 'ओ': 'o', 'औ': 'au',
               'क': 'k', 'ख': 'kh', 'ग': 'g', 'घ': 'gh', 'च': 'ch', 'छ': 'chh', 'ज': 'j', 'झ': 'jh', 'ट': 't', 'ठ': 'th',
               'ड': 'd', 'ढ': 'dh', 'ण': 'n', 'त': 't', 'थ': 'th', 'द': 'd', 'ध': 'dh', 'न': 'n', 'प': 'p', 'फ': 'ph',
-              'ब': 'b', 'भ': 'bh', 'म': 'm', 'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's',
-              'ह': 'h', 'ा': 'a', 'ि': 'i', 'ी': 'ee', 'ु': 'u', 'ू': 'oo', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au'
+              'ब': 'b', 'भ': 'bh', 'म': 'm', 'य': 'y', 'र': 'r', 'ल': 'l', 'व': 'v', 'श': 'sh', 'ष': 'sh', 'स': 's', 'ह': 'h',
+              'ा': 'a', 'ि': 'i', 'ी': 'ee', 'ु': 'u', 'ू': 'oo', 'े': 'e', 'ै': 'ai', 'ो': 'o', 'ौ': 'au'
        };
        return hindiText.split('').map(char => map[char] || char).join('');
 };
 
 const User = () => {
+
        const [users, setUsers] = useState([]);
        const [st, setSt] = useState(false);
        const [search, setSearch] = useState('');
+       const [selectedYear, setSelectedYear] = useState("2025");
 
        useEffect(() => {
-              axios.get(`${uri}/all-users`)
-                     .then(response => {
-                            setUsers(response.data);
+              setSt(false);
+              axios.get(`${uri}/all-users`, { params: { year: selectedYear } })
+                     .then(res => {
+                            setUsers(res.data);
                             setSt(true);
                      })
-                     .catch(error => console.error('Error fetching users:', error));
-       }, []);
-console.log(users)
-       const filteredUsers = users?.filter(user => {
-              const userName = user.name.toLowerCase();
-              const transliteratedName = transliterate(user.name).toLowerCase();
-              const query = search.toLowerCase();
-              return userName.includes(query) || transliteratedName.includes(query);
+                     .catch(err => console.error(err));
+       }, [selectedYear]);
+
+       const filteredUsers = users.filter(user => {
+              const name = user.name.toLowerCase();
+              const translit = transliterate(user.name).toLowerCase();
+              const q = search.toLowerCase();
+              return name.includes(q) || translit.includes(q);
        });
 
-       let total = 0;
-       users.map(itm => {
-              total += itm.pujaChanda
-       })
-       let bhojantotal = 0;
-       users.map(itm => {
-              // console.log(itm.khanaChanda)
-              bhojantotal += itm.khanaChanda
-       })
+       const total = users.reduce((sum, u) => sum + (Number(u.pujaChanda) || 0), 0);
+       const bhojanTotal = users.reduce((sum, u) => sum + (Number(u.khanaChanda) || 0), 0);
+       const grandTotal = total + bhojanTotal;
+
        return (
-              <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-10 px-4">
+              <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-6 px-3">
+
                      {/* Heading */}
-                     <h1 className="text-xl md:text-4xl font-extrabold text-orange-600 mb-8 relative animate-fade-in">
+                     <h1 className="text-xl sm:text-3xl font-bold text-orange-600 mb-4 text-center">
                             मां मथुरासिनी पूजा चंदा
-                            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
-                     </h1>
-                     <div className="flex gap-5 items-center justify-center mb-5">
-                            <h1 className="text-lg md:text-4xl font-extrabold text-orange-600  relative animate-fade-in">
-                                   💰 कुल पूजा चंदा : ₹ {total}
-                            </h1>
-                            <Link
-                                   to={`/details`}
-                                   className="text-blue-500 text-sm font-medium hover:text-orange-800 hover:underline transition-all duration-200  border-2 rounded-xl px-2"
-                            >
-                                   Details ➡
-                            </Link>
-                     </div>
-                     <div className="flex gap-3 items-center justify-center mb-5">
-                            <h1 className="text-lg md:text-4xl font-extrabold text-orange-600 m relative animate-fade-in">
-                                   💰 कुल भोजन चंदा : ₹ {bhojantotal}
-
-                            </h1>
-                            <Link
-                                   to={`/details`}
-                                   className="text-blue-500 text-sm font-medium hover:text-orange-800 hover:underline transition-all duration-200  border-2 rounded-xl px-2"
-                            >
-                                   Details ➡
-                            </Link>
-                     </div>
-
-                     <h1 className="text-lg md:text-4xl font-extrabold text-orange-600 mb-8 relative animate-fade-in">
-                            💰 कुल चंदा : ₹ {total + bhojantotal}
-
                      </h1>
 
-                     {/* Search Bar */}
-                     <div className="w-full max-w-lg mb-8">
+                     {/* Year selector + Totals from year table */}
+                     <div className="w-full max-w-xl mb-4 flex flex-row items-center justify-center gap-3">
+                            <select
+                                   value={selectedYear}
+                                   onChange={(e) => setSelectedYear(e.target.value)}
+                                   className="border border-gray-300 rounded-lg px-3 py-2 bg-white font-medium text-orange-600 mt-3"
+                            >
+                                   {AVAILABLE_YEARS.map((y) => (
+                                          <option key={y} value={y}>{y}</option>
+                                   ))}
+                            </select>
+                            <div className="mt-3 flex justify-center">
+                                   <Link
+                                          to={`/details?year=${selectedYear}`}
+                                          className="inline-block bg-orange-500 text-white px-6 py-1.5 rounded-lg font-semibold hover:bg-orange-600 transition"
+                                   >
+                                          View details
+                                   </Link>
+                            </div>
+                     </div>
+                     <div className="w-full max-w-xl mb-6 overflow-x-auto">
+                            <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+
+                                   <thead className="bg-white text-gray-700 border-b border-orange-600">
+                                          <tr>
+                                                 <th className="px-3 py-2 text-center font-semibold">पूजा</th>
+                                                 <th className="px-3 py-2 text-center font-semibold">भोजन</th>
+                                                 <th className="px-3 py-2 text-center font-semibold">कुल</th>
+                                          </tr>
+                                   </thead>
+
+                                   <tbody>
+                                          <tr className="bg-white text-center font-semibold">
+                                                 <td className="px-3 py-2 text-orange-600">₹ {total}</td>
+                                                 <td className="px-3 py-2 text-orange-600">₹ {bhojanTotal}</td>
+                                                 <td className="px-3 py-2 text-orange-700 text-base">₹ {grandTotal}</td>
+                                          </tr>
+                                   </tbody>
+
+                            </table>
+                            <p className="text-xs text-gray-500 mt-1 text-center">वर्ष {selectedYear} के अनुसार (from year table)</p>
+                            
+                     </div>
+
+                     {/* Search */}
+                     <div className="w-full max-w-xl mb-6 border-2 border-orange-500  rounded-lg">
                             <input
                                    type="text"
                                    placeholder="🔍 अपना नाम खोजें"
                                    value={search}
                                    onChange={(e) => setSearch(e.target.value)}
-                                   className="w-full p-3 border bg-white border-gray-700 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-300 text-gray-700 placeholder-gray-400"
+                                   className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 outline-none text-sm"
                             />
                      </div>
 
-                     {/* User List or Loading */}
+                     {/* User List */}
                      {st ? (
-                            <ul className="w-full max-w-lg bg-white shadow-xl rounded-xl p-6 animate-fade-in delay-200">
-                                   <li className="text-lg font-semibold text-gray-800 border-b-2 border-orange-200 pb-3 mb-4 flex justify-between">
+                            <div className="w-full max-w-xl bg-white shadow rounded-lg">
+
+                                   {/* Header */}
+                                   <div className="flex justify-between px-4 py-3 border-b font-semibold text-sm text-gray-700">
                                           <span>नाम</span>
                                           <span>विवरण</span>
-                                   </li>
+                                   </div>
+
                                    {filteredUsers.length > 0 ? (
                                           filteredUsers.map((user, index) => (
-                                                 <li
-                                                        key={user?._id}
-                                                        className="flex justify-between items-center py-3 border-b border-gray-100 hover:bg-orange-50 transition-all duration-200"
+                                                 <div
+                                                        key={user._id}
+                                                        className="flex justify-between items-center px-4 py-3 border-b hover:bg-orange-50 text-sm"
                                                  >
+
                                                         <Link to={`/user/${user._id}`}>
-                                                               <span className={` ${user.pujaChanda === 0 && 'text-yellow-400' }  text-md text-blue-500 w-[120px]`}>
+                                                               <span className={`${user.pujaChanda === 0 ? "text-yellow-500" : "text-blue-600"
+                                                                      }`}>
                                                                       {index + 1}. {user.name}
                                                                </span>
                                                         </Link>
+
                                                         <Link
                                                                to={`/user/${user._id}`}
-                                                               className="text-blue-600 font-medium hover:text-orange-800 hover:underline transition-all duration-200"
+                                                               className="text-xs bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600"
                                                         >
-                                                               Details ➡
+                                                               Details
                                                         </Link>
-                                                 </li>
+
+                                                 </div>
                                           ))
                                    ) : (
-                                          <li className="text-md text-gray-500 text-center py-4">कोई परिणाम नहीं मिला</li>
+                                          <div className="text-center py-6 text-gray-500 text-sm">
+                                                 कोई परिणाम नहीं मिला
+                                          </div>
                                    )}
-                            </ul>
+
+                            </div>
                      ) : (
-                            <div className="flex items-center justify-center text-lg font-semibold text-gray-600 animate-pulse">
-                                   <svg className="animate-spin h-6 w-6 mr-3 text-orange-600" viewBox="0 0 24 24">
-                                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8h8a8 8 0 01-16 0z" />
-                                   </svg>
+                            <div className="flex items-center gap-3 text-gray-600 animate-pulse">
+                                   <div className="w-5 h-5 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
                                    लोड हो रहा है...
                             </div>
                      )}
+
               </div>
        );
 };

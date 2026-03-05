@@ -17,7 +17,7 @@ import Vivah from './pages/Vivah';
 function App() {
 
   return (
-    <div className="p">
+    <div className="p"> 
 
 
       <Router>
