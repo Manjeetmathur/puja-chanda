@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import p1 from '../assets/p1.jpg';
 import p4 from '../assets/p4.jpg';
@@ -9,15 +8,12 @@ import p7 from '../assets/p7.jpg';
 import p8 from '../assets/p8.jpg';
 import p9 from '../assets/p10.jpg';
 import p10 from '../assets/p9.jpg';
-import { uri } from '../backend/Uri';
 
 const Home = () => {
        const [currentImage, setCurrentImage] = useState(0);
        const images = [p1, p4, p5, p6, p7, p8, p10, p9];
      
        useEffect(() => {
-              
-
               // Image rotation every 3 seconds
               const interval = setInterval(() => {
                      setCurrentImage((prev) => (prev + 1) % images.length);
@@ -28,15 +24,7 @@ const Home = () => {
 
        return (
               <div className="relative min-h-screen bg-orange-100 flex flex-col overflow-hidden">
-                     {/* Header Section */}
-                     <header className="w-full bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
-                            <div className="container mx-auto px-4 flex justify-center items-center">🙏
-                                   <h1 className="text-3xl font-extrabold tracking-wider drop-shadow-md bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-white">
-                                          जय मां मथुरासिनी
-                                   </h1>
-                                   🙏
-                            </div>
-                     </header>
+                   
 
                      {/* Hero Section */}
                      <section className="container mx-auto px-4 py-16 flex-grow flex items-center justify-center">

@@ -29,17 +29,8 @@ const Admin = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-100 to-orange-50 flex flex-col">
 
-      {/* Header */}
-      <header className="bg-gradient-to-r from-orange-600 to-pink-600 text-white py-6 shadow-lg">
-        <div className="text-center">
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-wide">
-            🙏 जय मां मथुरासिनी 🙏
-          </h1>
-        </div>
-      </header>
-
       {/* Dashboard */}
-      <div className="flex-1 flex items-center justify-center px-4 py-10">
+      <div className="flex-1 flex px-4 py-14">
 
         <div className="w-full max-w-xl">
 

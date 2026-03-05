@@ -14,12 +14,17 @@ import ExpenseAdmin from './pages/Admin/CreateExpanse/CreateExpenseAdmin';
 import Vivahshulk from './pages/Admin/Vivahshulk/Vivahshulk';
 import VivahShulkDetails from './pages/Admin/Vivahshulk/VivahShulkdetails';
 import Vivah from './pages/Vivah';
+import logo from './assets/p1.jpg';
 function App() {
 
   return (
-    <div className="p"> 
+    <div className="p">
 
-
+      {/* Heading */}
+      <h1 className="text-xl w-full p-2 sm:text-3xl bg-white font-bold text-orange-600 text-center flex items-center justify-center gap-3">
+        <img src={logo} alt="logo" className="w-10 h-10" />
+        मां मथुरासिनी पूजा चंदा
+      </h1>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -29,8 +34,8 @@ function App() {
           <Route path="/vivah-admin" element={<Vivahshulk />} />
           <Route path="/prarthana" element={<Prarthana />} />
           <Route path="/user" element={<User />} />
-          <Route path="/expense" element={<Expense/>} />
-          <Route path="/vivah-shulk-details" element={<Vivah/>} />
+          <Route path="/expense" element={<Expense />} />
+          <Route path="/vivah-shulk-details" element={<Vivah />} />
           <Route path="/details" element={<Details />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/pay/:id" element={<Pay />} />

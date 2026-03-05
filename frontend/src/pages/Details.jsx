@@ -32,12 +32,8 @@ const Details = () => {
        const grandTotal = total + bhojantotal;
 
        return (
-              <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center py-10 px-4">
-                     <h1 className="text-xl md:text-4xl font-extrabold text-orange-600 mb-6 relative animate-fade-in">
-                            मां मथुरासिनी पूजा चंदा
-                            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-orange-400 rounded-full animate-slide-up"></span>
-                     </h1>
-
+              <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center pb-10 pt-4 px-4">
+                    
                      {/* Year selector - same as User.jsx, totals from year table */}
                      <div className="w-full max-w-lg mb-4 flex items-center justify-center gap-3">
                             <label className="text-sm font-medium text-gray-700">वर्ष (Year):</label>
