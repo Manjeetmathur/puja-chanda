@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
        {
-              origin:["https://puja-chanda.vercel.app","http://localhost:5173"],
+              origin:["https://puja-chanda.vercel.app","http://localhost:5173","http://localhost:4173"],
               credentials:true
        }
 ));

@@ -30,7 +30,8 @@ const Update = () => {
        const [saving, setSaving] = useState(false);
        const [deleting, setDeleting] = useState(false);
        const [userData, setUserData] = useState(null);
-       const [selectedYear, setSelectedYear] = useState("2025");
+       const year = new Date().getFullYear();
+       const [selectedYear, setSelectedYear] = useState(year);
 
        const [form, setForm] = useState({
               name: "",
@@ -117,15 +118,12 @@ const Update = () => {
        return (
               <div className="min-h-screen bg-orange-50 p-1 sm:p-4">
 
-                     <div className="max-w-5xl mx-auto  p-2 sm:p-6 py-6 my-4">
+                     <div className="max-w-5xl mx-auto  p-2 sm:p-6 pb-6 my-2">
 
                             {/* Header */}
-                            <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
-                                   <h1 className="text-2xl font-bold text-orange-600">
-                                          User Update
-                                   </h1>
-                                   <div className="flex items-center gap-3">
-                                          <label className="text-sm font-medium text-gray-700">वर्ष (Year):</label>
+                            <div className="flex  gap-4 mb-6 ">
+
+                                   <div className="flex justify-between gap-30">
                                           <select
                                                  value={selectedYear}
                                                  onChange={(e) => setSelectedYear(e.target.value)}

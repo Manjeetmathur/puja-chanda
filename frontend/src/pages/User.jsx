@@ -21,7 +21,8 @@ const User = () => {
        const [users, setUsers] = useState([]);
        const [st, setSt] = useState(false);
        const [search, setSearch] = useState('');
-       const [selectedYear, setSelectedYear] = useState("2026");
+       const year = new Date().getFullYear();
+       const [selectedYear, setSelectedYear] = useState(year);
 
        useEffect(() => {
               setSt(false);

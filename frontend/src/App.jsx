@@ -14,6 +14,7 @@ import ExpenseAdmin from './pages/Admin/CreateExpanse/CreateExpenseAdmin';
 import Vivahshulk from './pages/Admin/Vivahshulk/Vivahshulk';
 import VivahShulkDetails from './pages/Admin/Vivahshulk/VivahShulkdetails';
 import Vivah from './pages/Vivah';
+import InstallPWA from './components/InstallPWA';
 import logo from './assets/p1.jpg';
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <img src={logo} alt="logo" className="w-10 h-10" />
         मां मथुरासिनी पूजा चंदा
       </h1>
+      <InstallPWA />
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
