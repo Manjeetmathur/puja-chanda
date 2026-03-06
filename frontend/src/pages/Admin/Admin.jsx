@@ -15,6 +15,16 @@ const Admin = () => {
       color: "from-blue-500 to-indigo-600",
     },
     {
+      title: "नया खर्च लिखें",
+      path: "/expense-admin",
+      color: "from-amber-500 to-orange-600",
+    },
+    {
+      title: "खर्च की जानकारी",
+      path: "/expense",
+      color: "from-orange-500 to-amber-600",
+    },
+    {
       title: "विवाह शुल्क लिखें",
       path: "/vivah-admin",
       color: "from-pink-500 to-red-500",

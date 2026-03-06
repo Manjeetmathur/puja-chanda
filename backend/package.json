@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
-    "migrate:year-contribution": "node scripts/migrate-to-year-contribution.js"
+    "migrate:year-contribution": "node scripts/migrate-to-year-contribution.js",
+    "migrate:expense-year": "node scripts/migrate-expense-year.js"
   },
   "author": "",
   "license": "ISC",
