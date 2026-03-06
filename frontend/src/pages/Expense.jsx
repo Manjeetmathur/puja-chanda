@@ -20,7 +20,7 @@ const transliterate = (text) => {
 const Expense = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const yearFromUrl = searchParams.get('year');
-  const initialYear = yearFromUrl && AVAILABLE_YEARS.includes(yearFromUrl) ? yearFromUrl : '2025';
+  const initialYear = yearFromUrl && AVAILABLE_YEARS.includes(yearFromUrl) ? yearFromUrl : new Date().getFullYear().toString();
 
   const [expenses, setExpense] = useState([]);
   const [loading, setLoading] = useState(true);

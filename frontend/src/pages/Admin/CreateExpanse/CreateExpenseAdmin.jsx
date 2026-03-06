@@ -12,7 +12,8 @@ const ExpenseAdmin = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [expenses, setExpense] = useState([]);
-  const [selectedYear, setSelectedYear] = useState('2025');
+  const year = new Date().getFullYear();
+  const [selectedYear, setSelectedYear] = useState(year);
   const [listLoading, setListLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
