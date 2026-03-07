@@ -7,12 +7,10 @@ import UserDetails from './pages/UserDetails';
 import Pay from './pages/Pay';
 import Update from './pages/Admin/CreateUser/Update';
 import Prarthana from './pages/Prarthana';
-import Details from './pages/Details';
 import Expense from './pages/Expense';
 import UserAdmin from './pages/Admin/CreateUser/UserAdmin';
 import ExpenseAdmin from './pages/Admin/CreateExpanse/CreateExpenseAdmin';
 import Vivahshulk from './pages/Admin/Vivahshulk/Vivahshulk';
-import VivahShulkDetails from './pages/Admin/Vivahshulk/VivahShulkdetails';
 import Vivah from './pages/Vivah';
 import InstallPWA from './components/InstallPWA';
 import logo from './assets/p1.jpg';
@@ -38,7 +36,6 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/expense" element={<Expense />} />
           <Route path="/vivah-shulk-details" element={<Vivah />} />
-          <Route path="/details" element={<Details />} />
           <Route path="/update/:id" element={<Update />} />
           <Route path="/pay/:id" element={<Pay />} />
           <Route path="/user/:id" element={<UserDetails />} />

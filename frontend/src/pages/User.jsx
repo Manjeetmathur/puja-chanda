@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { uri } from "../backend/Uri";
+import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
 const AVAILABLE_YEARS = ["2024", "2025", "2026", "2027", "2028", "2029", "2030"];
 
@@ -48,7 +49,7 @@ const User = () => {
        return (
               <div className="min-h-screen bg-gradient-to-b from-orange-100 to-gray-50 flex flex-col items-center pb-6 ">
 
-                     
+
                      <div className="w-full p-2">
 
                             {/* Year selector + Totals from year table */}
@@ -64,10 +65,10 @@ const User = () => {
                                    </select>
                                    <div className="mt-3 flex justify-center">
                                           <Link
-                                                 to={`/details?year=${selectedYear}`}
+                                                 to={`/expense?year=${selectedYear}`}
                                                  className="inline-block bg-orange-500 text-white px-6 py-1.5 rounded-lg font-semibold hover:bg-orange-600 transition"
                                           >
-                                                 View details
+                                                 खर्च देखें
                                           </Link>
                                    </div>
                             </div>
@@ -91,7 +92,7 @@ const User = () => {
                                           </tbody>
 
                                    </table>
-                                  
+
 
                             </div>
 
@@ -108,44 +109,48 @@ const User = () => {
 
                             {/* User List */}
                             {st ? (
-                                   <div className="w-full max-w-xl bg-white shadow rounded-lg">
-
-                                          {/* Header */}
-                                          <div className="flex justify-between px-4 py-3 border-b font-semibold text-sm text-gray-700">
-                                                 <span>नाम</span>
-                                                 <span>विवरण</span>
-                                          </div>
-
+                                   <div className="w-full max-w-xl bg-white shadow rounded-lg overflow-hidden">
                                           {filteredUsers.length > 0 ? (
-                                                 filteredUsers.map((user, index) => (
-                                                        <div
-                                                               key={user._id}
-                                                               className="flex justify-between items-center px-4 py-3 border-b hover:bg-orange-50 text-sm"
-                                                        >
-
-                                                               <Link to={`/user/${user._id}`}>
-                                                                      <span className={`${user.pujaChanda === 0 ? "text-yellow-500" : "text-blue-600"
-                                                                             }`}>
-                                                                             {index + 1}. {user.name}
-                                                                      </span>
-                                                               </Link>
-
-                                                               <Link
-                                                                      to={`/user/${user._id}`}
-                                                                      className="text-xs bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600"
-                                                               >
-                                                                      Details
-                                                               </Link>
-
-                                                        </div>
-                                                 ))
+                                                 <table className="w-full text-sm">
+                                                        <thead>
+                                                               <tr className="border-b font-semibold text-gray-700 bg-gray-50">
+                                                                      <th className="px-4 py-3 text-left min-w-[150px]">नाम</th>
+                                                                      <th className="px-4 py-3 text-right min-w-[40px]">पूजा</th>
+                                                                      <th className="px-4 py-3 text-right min-w-[40px]">भोजन</th>
+                                                               </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                               {filteredUsers.map((user, index) => (
+                                                                      <tr key={user._id} className="border-b hover:bg-orange-50">
+                                                                             <td className="px-4 py-3">
+                                                                                    <Link to={`/user/${user._id}`}>
+                                                                                           <span className={`${user.pujaChanda === 0 ? "text-yellow-500" : "text-blue-600"}`}>
+                                                                                                  {index + 1}. {user.name} 
+                                                                                                  <ArrowBigRight className="w-4 h-4 inline-block ml-2" />
+                                                                                           </span>
+                                                                                    </Link>
+                                                                             </td>
+                                                                             <td className="px-4 py-3 text-right">
+                                                                                    <span className={`${(Number(user.pujaChanda) || 0) === 0 ? "text-yellow-500" : "text-blue-500"}`}>
+                                                                                           {user.pujaChanda ?? 0}
+                                                                                    </span>
+                                                                             </td>
+                                                                             <td className="px-4 py-3 text-right">
+                                                                                    <span className={`${(Number(user.khanaChanda) || 0) === 0 ? "text-yellow-500" : "text-blue-500"}`}>
+                                                                                           {user.khanaChanda ?? 0}
+                                                                                    </span>
+                                                                             </td>
+                                                                      </tr>
+                                                               ))}
+                                                        </tbody>
+                                                 </table>
                                           ) : (
                                                  <div className="text-center py-6 text-gray-500 text-sm">
                                                         कोई परिणाम नहीं मिला
                                                  </div>
                                           )}
-
                                    </div>
+
                             ) : (
                                    <div className="flex items-center justify-center gap-3 text-gray-600 animate-pulse text-center">
                                           <div className="w-5 h-5 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
