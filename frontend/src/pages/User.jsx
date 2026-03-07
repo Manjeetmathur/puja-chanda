@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { uri } from "../backend/Uri";
-import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
 
 const AVAILABLE_YEARS = ["2024", "2025", "2026", "2027", "2028", "2029", "2030"];
 
@@ -124,10 +123,10 @@ const User = () => {
                                                                       <tr key={user._id} className="border-b hover:bg-orange-50">
                                                                              <td className="px-4 py-3">
                                                                                     <Link to={`/user/${user._id}`}>
-                                                                                           <span className={`${user.pujaChanda === 0 ? "text-yellow-500" : "text-blue-600"}`}>
-                                                                                                  {index + 1}. {user.name} 
-                                                                                                  <ArrowBigRight className="w-4 h-4 inline-block ml-2" />
-                                                                                           </span>
+<span className={`${user.pujaChanda === 0 ? "text-yellow-500" : "text-blue-600"}`}>
+                                                                                                         {index + 1}. {user.name}
+                                                                                                         <span className="ml-2 opacity-80">➜</span>
+                                                                                                  </span>
                                                                                     </Link>
                                                                              </td>
                                                                              <td className="px-4 py-3 text-right">
